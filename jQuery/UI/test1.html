@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标经过不同标签触发不同背景</title>
+    <style>
+        .bodyCon07{
+            width:1000px;
+            overflow:hidden;
+            margin:0 auto;
+        }
+        .bodyCon07 .teacher{
+            width:1000px;
+            height:325px;
+            position:relative;
+            margin:0 auto;
+            overflow:hidden;
+        }
+        .bodyCon07 .teacher .teacherPic{
+            width:1000px;
+            height:325px;
+            position:absolute;
+            background:url(../images/sirendingzhi1.jpg) no-repeat;
+        }
+        .bodyCon07 .teacher .teacherPic .content{
+            width:200px;
+            height:325px;
+            float:left;
+            position:relative;
+            overflow:hidden;
+        }
+        .bodyCon07 .teacher .teacherPic .content .txt{
+            width:176px;
+            height:100px;
+            background:rgba(18,21,44,0.5);
+            position:absolute;left:0px;
+            bottom:0px;
+            padding:0 12px;
+            border-top:2px solid #FFE000;
+            font-family: "微软雅黑";
+            font-size: 12px;
+        }
+        .bodyCon07 .teacher .teacherPic .content .txt h3{color:#FFC200;font-size:24px;font-weight:100;margin:10px 0 6px 0;}
+        .bodyCon07 .teacher .teacherPic .content .txt h4{color:#fff;font-size:12px;font-weight:100;height: 40px;}
+        .bodyCon07 .teacher .teacherPic .content .txt p{color:#fff;margin-top:15px;padding-top:5px;border-top:1px solid #FFC200;font-family: 微软雅黑;}
+    </style>
+</head>
+<body>
+<div class="bodyCon07">
+<div class="teacher">
+    <div class="teacherPic">
+        <div class="content" id="sirendingzhi1">
+            <div class="txt">
+                <h3>新疆</h3>
+                <h4>草场丰腴、林木葱郁，有着“塞外江南”的美称</h4>
+                <p>发团日期：7-10月<br>
+                    参考价格：5280元<br>
+                    摄影器材: 单反 广角 中长焦 三脚架等</p>
+            </div>
+        </div>
+        <div class="content" id="sirendingzhi2">
+
+            <div class="txt">
+                <h3>云南</h3>
+                <h4>东川红土地的炫彩、高原明珠——抚仙湖的柔美</h4>
+                <p>发团日期：7-11月<br>
+                    参考价格：2780元<br>
+                    摄影器材: 单反 广角 中长焦 三脚架等</p>
+            </div>
+        </div>
+        <div class="content" id="sirendingzhi3">
+
+            <div class="txt">
+                <a href="#" ><h3>贵州</h3></a>
+                <h4>西江千户苗寨 以美丽回答一切</h4>
+                <p>发团日期：7-12月<br>
+                    参考价格：2680元<br>
+                    摄影器材: 单反 广角 中长焦 三脚架等</p>
+            </div>
+        </div>
+        <div class="content" id="sirendingzhi4">
+
+            <div class="txt">
+                <h3>色达</h3>
+                <h4>地球上最后的一片净土，心灵净化之旅</h4>
+                <p>发团日期：7-10月<br>
+                    参考价格：3900元<br>
+                    摄影器材: 单反 广角 中长焦 三脚架等</p>
+            </div>
+        </div>
+        <div class="content" id="sirendingzhi5">
+
+            <div class="txt">
+                <h3>斯里兰卡</h3>
+                <h4>印度洋上的一滴眼泪！</h4>
+                <p>发团日期：6-12月<br>
+                    参考价格：1250美金<br>
+                    摄影器材: 单反 广角 中长焦 三脚架等</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+</div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script>
+     $(".content").hover(function(){
+         $(this).children(".txt").animate({height:"220px"},200);      //动画时长为 200 ms
+         $(this) .parent(".teacherPic") .css({"background":"url(../images/"+($(this).attr('id'))+".jpg) no-repeat","-webkit-transition":"all 0.8s ease 0.2s","transition":"all 0.8s ease 0.2s"});
+         //$(this) .find(".txt h3").stop() .animate({paddingTop:"130"},550);
+         //$(this) .find(".txt p").stop() .show();
+     },function(){
+         $(this).children(".txt").animate({height:"100px"},200);      //动画时长为 200 ms
+         //$(this) .find(".txt h3").stop().animate({paddingTop:"0px"},550);
+         //$(this) .find(".txt p").stop() .hide();
+     });
+    /*
+    a.hover(b,c): b c分别代表鼠标放入和离开时触发的效果的函数
+     */
+</script>
+</body>
+</html>

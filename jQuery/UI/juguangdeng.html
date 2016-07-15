@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery背景墙聚光灯效果代码</title>
+    <style>
+        body{
+            background: black;
+            color: white;
+        }
+        .spotlightWrapper ul{
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        .spotlightWrapper ul li{
+            float: left;        /* display；inline */
+            position: relative;
+        }
+        .spotlightWrapper ul li a img {
+            width: 200px;
+            position: relative;
+            border: none;
+        }
+        .spotlightWrapper ul li a img.active{      /* 或者写成 : hover *   也可以 */
+            border: 4px solid white;
+            z-index:1;
+            left: -4px;
+            top: -4px;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+      <h2>jQuery背景墙聚光灯效果</h2>
+      <p>点击图片查看效果</p>
+      <div class="spotlightWrapper">
+          <ul>
+              <li><a href='#'><img src='../images/1.jpg' /></a></li>
+              <li><a href='#'><img src='../images/2.jpg' /></a></li>
+              <li><a href='#'><img src='../images/3.png' /></a></li>
+              <li><a href='#'><img src='../images/4.jpg' /></a></li>
+              <li><a href='#'><img src='../images/5.jpg' /></a></li>
+              <li><a href='#'><img src='../images/6.png' /></a></li>
+              <div class='clear'></div>
+          </ul>
+      </div>
+      <script type="text/javascript" charset="utf-8" src='../js/jquery.js'></script>
+      <script>
+          $(window).load(function(){
+              var spotlight = {
+                  opacity : 0.2,
+                  imgWidth : $('.spotlightWrapper ul li').find('img').width(),
+                  imgHeight : $('.spotlightWrapper ul li').find('img').height()
+              };
+              //set the width and height of the list items same as the images
+              $('.spotlightWrapper ul li').css({'width': spotlight.imgWidth,'height':spotlight.imgHeight});
+              //when mouse over the list item...
+              $('.spotlightWrapper ul li').hover(function(){
+                  $(this).find('img').addClass('active').css({'opacity' : 1});
+                  $(this).siblings('li').find('img').css({'opacity':spotlight.opacity});
+                  //when mouse leave...
+              },function(){
+                  $(this).find('img').removeClass('active');
+              });
+              //when mouse leaves the unordered list...
+              $('.spotlightWrapper ul').bind('mouseleave',function(){
+                  $(this).find('img').css({'opacity' :1});
+              });
+          });
+      </script>
+</body>
+</html>
